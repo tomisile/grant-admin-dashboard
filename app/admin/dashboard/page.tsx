@@ -22,7 +22,7 @@ export default function DashboardPage() {
   const colors = ["#FB651E", "#4B5563", "#E8E8E8", "#FF8C42"]
 
   return (
-    <div className="p-8">
+    <div className="p-4 md:p-8 md:pt-8 pt-16">
       {/* Header */}
       <div className="mb-8">
         <h1 className="text-3xl font-bold text-foreground">Grant Program Dashboard</h1>
@@ -126,18 +126,18 @@ export default function DashboardPage() {
         {/* LGA Distribution */}
         <div className="bg-card border border-border rounded-lg p-6">
           <h2 className="text-lg font-bold mb-6 text-foreground">Distribution by LGA (Calabar)</h2>
-          <div className="space-y-3">
+          <div className="space-y-4">
             {mockAnalytics.lgas.map((lga) => (
-              <div key={lga.name} className="flex items-center justify-between">
-                <span className="text-sm font-medium text-foreground">{lga.name}</span>
-                <div className="flex items-center gap-3">
-                  <div className="w-48 bg-muted rounded-full h-2">
-                    <div
-                      className="bg-accent h-full rounded-full"
-                      style={{ width: `${(lga.count / mockAnalytics.totalBeneficiaries) * 100}%` }}
-                    />
-                  </div>
-                  <span className="text-sm font-bold text-foreground w-8">{lga.count}</span>
+              <div key={lga.name} className="flex flex-col gap-2">
+                <div className="flex items-center justify-between">
+                  <span className="text-sm font-medium text-foreground">{lga.name}</span>
+                  <span className="text-sm font-bold text-foreground">{lga.count}</span>
+                </div>
+                <div className="w-full bg-muted rounded-full h-2">
+                  <div
+                    className="bg-accent h-full rounded-full"
+                    style={{ width: `${(lga.count / mockAnalytics.totalBeneficiaries) * 100}%` }}
+                  />
                 </div>
               </div>
             ))}
@@ -146,20 +146,20 @@ export default function DashboardPage() {
       </div>
 
       {/* Program Health */}
-      <div className="bg-card border border-border rounded-lg p-6">
-        <h2 className="text-lg font-bold mb-6 text-foreground">Grant Distribution Progress</h2>
-        <div className="grid grid-cols-3 gap-6">
-          <div>
-            <p className="text-sm text-muted-foreground mb-2">Total Allocated</p>
-            <p className="text-2xl font-bold text-foreground">₦{(mockAnalytics.totalFundsAllocated / 1000000).toFixed(0)}M</p>
+      <div className="bg-card border border-border rounded-lg p-8">
+        <h2 className="text-lg font-bold mb-8 text-foreground">Grant Distribution Progress</h2>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="flex flex-col">
+            <p className="text-sm text-muted-foreground mb-3">Total Allocated</p>
+            <p className="text-3xl font-bold text-foreground">₦{(mockAnalytics.totalFundsAllocated / 1000000).toFixed(0)}M</p>
           </div>
-          <div>
-            <p className="text-sm text-muted-foreground mb-2">Total Released</p>
-            <p className="text-2xl font-bold text-accent">₦{(mockAnalytics.totalFundsReleased / 1000000).toFixed(0)}M</p>
+          <div className="flex flex-col">
+            <p className="text-sm text-muted-foreground mb-3">Total Released</p>
+            <p className="text-3xl font-bold text-accent">₦{(mockAnalytics.totalFundsReleased / 1000000).toFixed(0)}M</p>
           </div>
-          <div>
-            <p className="text-sm text-muted-foreground mb-2">Compliance Rate</p>
-            <p className="text-2xl font-bold text-foreground">{mockAnalytics.complianceRate}%</p>
+          <div className="flex flex-col">
+            <p className="text-sm text-muted-foreground mb-3">Compliance Rate</p>
+            <p className="text-3xl font-bold text-foreground">{mockAnalytics.complianceRate}%</p>
           </div>
         </div>
       </div>
